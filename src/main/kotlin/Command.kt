@@ -1,10 +1,12 @@
 interface Command {
-    fun returnCar(owner: Owner){}
+    fun returnCar(numberCar:String?, owner: Owner?){
+
+    }
     fun parkInfoByCar(numberCar: String){
     }
     fun parkInfoByPlace(place: String){}
 
-    fun park(car:Car, owner:Owner){
+    fun park(car:Car) {
 
     }
 

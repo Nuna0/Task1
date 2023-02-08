@@ -1,5 +1,4 @@
 data class Owner(
-    val firstname: String,
-    val surname: String
+    val name: String?
 ) {
 }
