@@ -3,5 +3,4 @@ data class Car(
     val color:String,
     val numb: String,
     val owner: Owner
-) {
-}
+)

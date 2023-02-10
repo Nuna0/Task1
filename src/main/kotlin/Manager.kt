@@ -2,10 +2,11 @@ class Manager:Command {
     val park = Parking
     override fun park(car: Car){
         val key =  park.parking.filterValues {
-            it ==null}.keys.first()
+            it ==null
+        }.keys.first()
         park.parking[key] = car
         println("Машина ${car.brand} ${car.color} ${car.numb} припаркована  на месте $key")
-        //println("${park.parking}")
+        park.list.add(car)
     }
      override fun parkInfoByCar(numberCar: String) {
          val key:String? = park.parking.filterValues {
@@ -14,12 +15,12 @@ class Manager:Command {
          val place = park.parking[key]?.numb
          if (place==numberCar){
              println("Машина припаркована на месте $key")
+
          }else{
              println("Машины с таким номмером нет на стоянке")
          }
     }
     override fun parkInfoByPlace(place: String) {
-
         val key = park.parking.filterKeys {
             it==place
         }.keys.firstOrNull()
@@ -43,9 +44,21 @@ class Manager:Command {
         val kiy = park.parking.filterValues { it==car }.keys.first()
         park.parking[kiy] = null
         if (car!=null){
-            println("Вы освободили парковочное место")
+            println("Вы освободили парковочное место $key")
         }else{
             println("Вы неправильно ввели номер машины или имя владельца")
         }
+    }
+    override fun parkStats() {
+        for ((key,value )in park.parking){
+            if(value==null){
+            println("$key = свободно")
+            }else{
+                println("$key = ${value.color} ${value.brand} ${value.numb}")
+            }
+        }
+    }
+    fun parkAllStats(){
+        println("${park.list.size}")
     }
 }
